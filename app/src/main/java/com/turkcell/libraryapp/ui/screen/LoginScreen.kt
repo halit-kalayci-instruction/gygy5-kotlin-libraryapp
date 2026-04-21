@@ -31,6 +31,8 @@ import com.turkcell.libraryapp.ui.viewmodel.AuthState
 import com.turkcell.libraryapp.ui.viewmodel.AuthViewModel
 import io.github.jan.supabase.auth.Auth
 
+
+// TODO: Kayıt ol sayfası tasarlamak.
 @Composable
 fun LoginScreen(
 ) {
