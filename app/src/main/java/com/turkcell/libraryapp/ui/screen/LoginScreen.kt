@@ -14,6 +14,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -35,6 +36,7 @@ import io.github.jan.supabase.auth.Auth
 // TODO: Kayıt ol sayfası tasarlamak.
 @Composable
 fun LoginScreen(
+    onNavigateToRegister: () -> Unit
 ) {
 
     //LaunchedEffect() { }
@@ -89,6 +91,12 @@ fun LoginScreen(
             }, modifier = Modifier.fillMaxWidth()) {
                 Text("Giriş Yap")
             }
+        }
+
+        TextButton(onClick = {
+            onNavigateToRegister()
+        },) {
+            Text("Hesabınız yok mu? Kayıt Ol")
         }
 
 
