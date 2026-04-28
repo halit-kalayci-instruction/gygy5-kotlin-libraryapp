@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.halit.ui.screen.auth.RegisterScreen
+import com.turkcell.libraryapp.ui.screen.HomeScreen
 import com.turkcell.libraryapp.ui.screen.LoginScreen
 import com.turkcell.libraryapp.ui.viewmodel.AuthViewModel
 
@@ -15,16 +16,24 @@ import com.turkcell.libraryapp.ui.viewmodel.AuthViewModel
 fun NavGraph(navController: NavHostController = rememberNavController()) {
     val authViewModel: AuthViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = Screen.Register.route)
+    NavHost(navController = navController, startDestination = Screen.Login.route)
     {
         composable(Screen.Login.route) { LoginScreen(
             onNavigateToRegister = { navController.navigate(Screen.Register.route) },
-            onLoginSuccess = {role -> {}},
+            onLoginSuccess = {role ->
+                navController.navigate(Screen.Homepage.route) {
+                    popUpTo(Screen.Login.route) {inclusive=true}
+                    // Yığın yalnızca verilen URL ile kalacaktı (false)
+                }
+            },
             authViewModel
         ) }
         composable(Screen.Register.route) { RegisterScreen(
             onNavigateToLogin = { navController.navigate(Screen.Login.route) },
             authViewModel
         ) }
+        composable(Screen.Homepage.route) {
+            HomeScreen()
+        }
     }
 }
