@@ -48,4 +48,8 @@ class AuthViewModel : ViewModel()
                 .onFailure { ex -> _authState.value = AuthState.Error(ex.message ?: "Kayıt başarısız") }
         }
     }
+
+    fun resetState() {
+        _authState.value = AuthState.Idle;
+    }
 }

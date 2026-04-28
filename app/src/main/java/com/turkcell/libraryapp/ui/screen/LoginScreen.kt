@@ -50,6 +50,7 @@ fun LoginScreen(
         if(authState is AuthState.Success)
         {
             onLoginSuccess((authState as AuthState.Success).role)
+            authViewModel.resetState()
         }
     }
 
