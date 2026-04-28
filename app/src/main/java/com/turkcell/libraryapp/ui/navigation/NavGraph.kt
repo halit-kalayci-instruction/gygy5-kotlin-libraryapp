@@ -28,6 +28,7 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
             },
             authViewModel
         ) }
+        // ÖDEV 1: Kayıt ol'a success yapısı kurulacak.
         composable(Screen.Register.route) { RegisterScreen(
             onNavigateToLogin = { navController.navigate(Screen.Login.route) },
             authViewModel
