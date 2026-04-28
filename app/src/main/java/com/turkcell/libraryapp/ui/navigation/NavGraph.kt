@@ -33,7 +33,7 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
             authViewModel
         ) }
         composable(Screen.Homepage.route) {
-            HomeScreen()
+            HomeScreen(authViewModel)
         }
     }
 }
