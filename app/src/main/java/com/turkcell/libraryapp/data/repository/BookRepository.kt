@@ -20,4 +20,6 @@ class BookRepository {
     suspend fun addBook(book: Book): Result<Unit> = runCatching {
         supabase.postgrest["books"].insert(book)
     }
+
+    // ÖDEV 2: BookRepository Güncelleme, silme, arama fonksiyonlarını tanımla.
 }
