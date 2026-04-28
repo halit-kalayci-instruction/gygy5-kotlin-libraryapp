@@ -19,8 +19,9 @@ import com.turkcell.libraryapp.ui.viewmodel.AuthViewModel
 
 @Composable
 fun RegisterScreen(
+    onNavigateToLogin: () -> Unit,
+    authViewModel: AuthViewModel
 ) {
-    val authViewModel: AuthViewModel = viewModel() // Navigasyon ekranına taşı.
     val authState by authViewModel.authState.collectAsState()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -115,7 +116,7 @@ fun RegisterScreen(
         }
         Spacer(modifier = Modifier.height(12.dp))
 
-        TextButton(onClick = {}) {
+        TextButton(onClick = {onNavigateToLogin()}) {
             Text("Zaten hesabın var mı? Giriş Yap")
         }
     }
