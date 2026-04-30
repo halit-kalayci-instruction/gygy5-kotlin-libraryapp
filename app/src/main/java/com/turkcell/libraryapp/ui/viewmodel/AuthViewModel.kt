@@ -43,6 +43,7 @@ class AuthViewModel : ViewModel()
 
     init {
         viewModelScope.launch {
+            // session state hesaplama..
             supabase.auth.sessionStatus.collect { status ->
                 when (status)
                 {

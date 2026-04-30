@@ -21,7 +21,20 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
 
     NavHost(navController = navController, startDestination = Screen.Splash.route)
     {
-        composable(Screen.Splash.route) { SplashScreen() }
+        composable(Screen.Splash.route) {
+            SplashScreen(authViewModel,
+            onAuthenticated = { role ->
+                navController.navigate(Screen.Homepage.route){
+                    popUpTo(Screen.Splash.route) {inclusive=true}
+                }
+            },
+            onUnauthenticated = {
+                navController.navigate(Screen.Login.route)
+                {
+                    popUpTo(Screen.Splash.route) {inclusive=true}
+                }
+            })
+        }
         composable(Screen.Login.route) { LoginScreen(
             onNavigateToRegister = { navController.navigate(Screen.Register.route) },
             onLoginSuccess = {role ->
