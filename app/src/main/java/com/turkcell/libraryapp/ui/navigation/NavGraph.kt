@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.halit.ui.screen.auth.RegisterScreen
 import com.turkcell.libraryapp.ui.screen.HomeScreen
 import com.turkcell.libraryapp.ui.screen.LoginScreen
+import com.turkcell.libraryapp.ui.screen.SplashScreen
 import com.turkcell.libraryapp.ui.viewmodel.AuthViewModel
 import com.turkcell.libraryapp.ui.viewmodel.BookViewModel
 
@@ -18,8 +19,9 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
     val authViewModel: AuthViewModel = viewModel()
     val bookViewModel: BookViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = Screen.Login.route)
+    NavHost(navController = navController, startDestination = Screen.Splash.route)
     {
+        composable(Screen.Splash.route) { SplashScreen() }
         composable(Screen.Login.route) { LoginScreen(
             onNavigateToRegister = { navController.navigate(Screen.Register.route) },
             onLoginSuccess = {role ->
@@ -30,7 +32,6 @@ fun NavGraph(navController: NavHostController = rememberNavController()) {
             },
             authViewModel
         ) }
-        // ÖDEV 1: Kayıt ol'a success yapısı kurulacak.
         composable(Screen.Register.route) { RegisterScreen(
             onNavigateToLogin = { navController.navigate(Screen.Login.route) },
             authViewModel
